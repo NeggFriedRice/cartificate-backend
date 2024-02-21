@@ -5,8 +5,7 @@ import cors from 'cors'
 
 // Create instance of express
 const app = express()
-// Choose port to run on
-const port = 4002
+
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -19,6 +18,6 @@ app.get('/', (req, res) => {
     message: "Hello there!"})
 })
 
-app.listen(port, () => {
-  console.log("Now listening on port " + port)
+app.listen(process.env.PORT, () => {
+  console.log("Now listening on port " + process.env.PORT)
 })
