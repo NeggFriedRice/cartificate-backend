@@ -4,7 +4,7 @@ Please note this is the back end of the web app. For more information about this
 
 ### What is it?
 
-This repo serves as the back end of the CARtificate web app. It's built using JavaScript and utilises express and mongoose to do the heavy lifting.
+This repo serves as the back end of the CARtificate web app. It's built using JavaScript and utilises Express and mongoose to do the heavy lifting. Data is stored in MongoDB.
 
 ### How to set up
 
