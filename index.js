@@ -1,6 +1,7 @@
 // Import express
 import express from 'express'
-import router from './routes/update_routes.js'
+import updatesRouter from './routes/update_routes.js'
+import authRouter from './routes/auth.js'
 import cors from 'cors'
 
 // Create instance of express
@@ -11,7 +12,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cors())
 
-app.use('/updates', router)
+app.use('/updates', updatesRouter)
+app.use('/auth', authRouter)
 
 app.get('/', (req, res) => {
   res.send({

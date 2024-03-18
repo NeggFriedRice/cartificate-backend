@@ -1,5 +1,5 @@
 import express from 'express'
-import { UpdateModel } from '../db.js'
+import { UpdateModel, UserModel } from '../db.js'
 
 const router = express.Router()
 
