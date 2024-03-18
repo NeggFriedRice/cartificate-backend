@@ -1,8 +1,14 @@
 import express from 'express'
 import { UserModel } from '../db.js'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import UserClass from '../data_structures.js'
 
 const router = express.Router()
+
+function generateJWT(user) {
+    return jwt.sign({ _id: user._id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1w'})
+}
 
 router.get('/users/', async (req, res) => {
     try {
@@ -25,6 +31,30 @@ router.post('/register', async (req, res) => {
     } catch (error) {
         res.status(400).send({ error: "Something went wrong"})
     }
+})
+
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body
+    const user = await UserModel.findOne({ username: username})
+    if (user) {
+        const match = await bcrypt.compare(password, user.password)
+        if (match) {
+            const username = { name: user }
+            const accessToken = generateJWT(user)
+            const formattedUser = new UserClass(user)
+            res.send({
+                message: "Signed in!",
+                user: formattedUser,
+                accessToken: accessToken,
+                userId: user._id
+            })
+        } else {
+            res.status(404).send({ message: "Invalid username or password" })
+        }
+    } else {
+        res.status(404).send({ message: "Invalid username or password" })
+    }
+
 })
 
 export default router
