@@ -18,16 +18,6 @@ const closeConnection = () => {
   mongoose.disconnect()
 }
 
-// Define update schema
-const updateSchema = new Schema({
-  activity: { type: String },
-  date: { type: Date },
-  cost: { type: Number },
-  notes: { type: String }
-})
-
-const UpdateModel = mongoose.model('Update', updateSchema)
-
 // Define user schema
 const userSchema = new Schema({
   username: { type: String, required: true },
@@ -35,5 +25,17 @@ const userSchema = new Schema({
 })
 
 const UserModel = mongoose.model('User', userSchema)
+
+
+// Define update schema
+const updateSchema = new Schema({
+  activity: { type: String },
+  date: { type: Date },
+  cost: { type: Number },
+  notes: { type: String },
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
+})
+
+const UpdateModel = mongoose.model('Update', updateSchema)
 
 export { UpdateModel, UserModel, closeConnection }
