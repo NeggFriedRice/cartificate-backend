@@ -18,14 +18,21 @@ const closeConnection = () => {
   mongoose.disconnect()
 }
 
+
 // Define user schema
 const userSchema = new Schema({
   username: { type: String, required: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  vehicle: {
+    brand: { type: String, default: "" },
+    model: { type: String, default: "" },
+    year: { type: String, default: "" },
+    registration: { type: String, default: "" },
+    vin: { type: String, default: "" }
+  }
 })
 
 const UserModel = mongoose.model('User', userSchema)
-
 
 // Define update schema
 const updateSchema = new Schema({

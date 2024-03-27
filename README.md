@@ -6,7 +6,7 @@ Please note this is the back end of the web app. For more information about this
 
 This repo serves as the back end of the CARtificate web app. It's built using JavaScript and utilises Express and mongoose to do the heavy lifting. Data is stored in MongoDB.
 
-==== Deprecated notes 26/03/2024; app has now been deployed online so local install instructions are no longer relevant ====
+==== Deprecated notes below as of 26/03/2024; app has now been deployed online so local install instructions are no longer relevant ====
 ### How to set up
 
 - Create a new database in MongoDB
