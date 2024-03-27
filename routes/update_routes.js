@@ -29,7 +29,7 @@ router.post('/new', async (req, res) => {
 // Update existing update
 router.put('/:id', async (req, res) => {
   try {
-    const updatedEntry = await UpdateModel.findByIdAndUpdate(req.params.id, req.body, {new : true})
+    const updatedEntry = await UpdateModel.findByIdAndUpdate(req.params.id, req.body, {new: true})
     if (updatedEntry) {
       res.status(200).send({updatedEntry})
     } else {
