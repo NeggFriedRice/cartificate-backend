@@ -27,7 +27,7 @@ async function uploadToS3(file, updateId) {
         return { error: "No file"}
     }
 
-    let buffer = await sharp(file.buffer).resize({ height: 1169, width: 828, fit: "cover" }).toBuffer()
+    let buffer = await sharp(file.buffer).resize({ height: 1169, width: 828, fit: "contain" }).toBuffer()
 
     const params = {
         Bucket: process.env.IMG_BUCKET,
