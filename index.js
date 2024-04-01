@@ -3,6 +3,7 @@ import express from 'express'
 import updatesRouter from './routes/update_routes.js'
 import authRouter from './routes/auth.js'
 import profileRouter from './routes/profile_routes.js'
+import imageRouter from './routes/image_routes.js'
 import cors from 'cors'
 
 // Create instance of express
@@ -16,6 +17,7 @@ app.use(cors())
 app.use('/updates', updatesRouter)
 app.use('/auth', authRouter)
 app.use('/profile', profileRouter)
+app.use('/image', imageRouter)
 
 app.get('/', (req, res) => {
   res.send({

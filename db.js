@@ -40,7 +40,10 @@ const updateSchema = new Schema({
   date: { type: Date },
   cost: { type: Number },
   notes: { type: String },
-  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  img: { type: String },
+  imgUrl: { type: String }
+
 })
 
 const UpdateModel = mongoose.model('Update', updateSchema)

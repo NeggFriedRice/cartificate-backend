@@ -20,6 +20,7 @@ router.post('/new', async (req, res) => {
   try {
     const newUpdate = await (await UpdateModel.create(req.body))
     res.status(201).send(newUpdate)
+    console.log(newUpdate)
   } 
   catch (error) {
     console.log({error: error.message})
