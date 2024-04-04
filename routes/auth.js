@@ -30,7 +30,7 @@ router.post('/register', async (req, res) => {
         await user.save()
         res.send("User created successfully")
     } catch (error) {
-        res.status(400).send({ error: "Something went wrong"})
+        res.status(400).send({ error: error.message})
     }
 })
 

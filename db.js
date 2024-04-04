@@ -21,7 +21,7 @@ const closeConnection = () => {
 
 // Define user schema
 const userSchema = new Schema({
-  username: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   vehicle: {
     brand: { type: String, default: "" },
