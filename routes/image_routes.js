@@ -43,7 +43,7 @@ async function uploadToS3(file, updateId) {
             await s3.send(new DeleteObjectCommand({ Bucket: process.env.IMG_BUCKET, Key: update.img }))
         }
         update.img = file.originalname
-        const url = await getSignedUrl(s3, new GetObjectCommand({ Bucket: process.env.IMG_BUCKET, Key: file.originalname }), { expiresIn: 604800 })
+        const url = await getSignedUrl(s3, new GetObjectCommand({ Bucket: process.env.IMG_BUCKET, Key: file.originalname }))
         update.imgUrl = url
         await update.save()
         return await s3.send(command)
